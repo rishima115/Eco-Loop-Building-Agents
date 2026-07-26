@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco-Loop Building Agents | Quantitative BMS Savings Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🌿</div>
+      <div>
+        <h1>Eco-Loop Building Agents</h1>
+        <p style="color: var(--text-muted); font-size: 13px;">Autonomous Physical AI Closed-Loop HVAC Control Pipeline (EnergyPlus + MCP + LLM)</p>
+      </div>
+    </div>
+    <div class="badge">SYSTEM ACTIVE & OPTIMIZED</div>
+  </header>
+
+  <section class="metrics-grid">
+    <div class="card">
+      <div class="card-label">Energy Savings</div>
+      <div class="card-value" style="color: var(--accent-green);" id="metric-energy-pct">32.5%</div>
+      <div class="card-subtext" id="metric-energy-kwh">⚡ 8.99 kWh net saved today</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Electricity Cost Reduction</div>
+      <div class="card-value" style="color: var(--accent-cyan);" id="metric-cost-pct">30.6%</div>
+      <div class="card-subtext" id="metric-cost-usd">💰 $1.82 saved vs baseline</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Carbon Footprint Avoided</div>
+      <div class="card-value" style="color: var(--accent-orange);" id="metric-co2-pct">30.2%</div>
+      <div class="card-subtext" id="metric-co2-kg">🌱 4.40 kg CO2 emissions cut</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Thermal Comfort Compliance</div>
+      <div class="card-value" style="color: var(--accent-purple);" id="metric-pmv-compliance">100%</div>
+      <div class="card-subtext">ISO 7730 Class B (-0.5 ≤ PMV ≤ +0.5)</div>
+    </div>
+  </section>
+
+  <section class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">⚡ Real-Time Energy Consumption (kWh) - Baseline vs Eco-Loop AI</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="chart-energy"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">🌡️ Indoor Zone Temp vs Dynamic AI Setpoints (°C) & Thermal Envelope</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="chart-temperature"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">🧘 Fanger PMV Thermal Comfort Index (-0.5 to +0.5 Optimal)</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="chart-pmv"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">🌱 Grid Carbon Intensity (kgCO2/kWh) & Time-of-Use Electric Tariff ($)</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="chart-grid"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="log-inspector">
+    <div class="chart-header">
+      <div class="chart-title">🧠 Cognitive Agent MCP Reasoning & Control Log Stream</div>
+      <div style="font-size: 12px; color: var(--accent-cyan);">MCP Tools: get_building_telemetry → evaluate_pmv → apply_ecm</div>
+    </div>
+    <div class="log-stream" id="log-stream">
+      <div class="log-entry">
+        <span class="log-time">[08:00]</span> <span class="log-strategy">STRATEGY: DYNAMIC_THERMAL_RESET</span> | Occupants arrived (12 people). Outdoor temp 25.4°C. Setting cooling setpoint to 23.8°C. PMV: +0.08 (Class A).
+      </div>
+      <div class="log-entry">
+        <span class="log-time">[13:00]</span> <span class="log-strategy">STRATEGY: PEAK_DEMAND_CARBON_SHED</span> | Peak electric rate ($0.28/kWh) & Grid Carbon 0.65 kg/kWh. Floating setpoint to 24.5°C. PMV: +0.22 (Class B).
+      </div>
+      <div class="log-entry">
+        <span class="log-time">[19:00]</span> <span class="log-strategy">STRATEGY: NIGHT_PURGE_UNOCCUPIED</span> | Office unoccupied (0 people). Switching to setback mode (26.5°C cooling / 18.0°C heating). HVAC power reduced to 0.2 kW.
+      </div>
+    </div>
+  </section>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+! ==============================================================================
+! EnergyPlus Input Data File (.idf) - Eco-Loop Dynamic AI-Controlled Model
+! Communication Protocol: Model Context Protocol (MCP) Dynamic EMS Setpoint Injection
+! Target HVAC Strategy: LLM Agent Dynamic Thermal Comfort & Carbon-Aware Overrides
+! ==============================================================================
+
+Version, 23.2;
+
+Building,
+  SingleZone_Office_EcoLoop_AI, 0.0, Suburbs, 0.04, 0.4, FullExterior, 25, 6;
+
+Timestep, 4;
+
+GlobalGeometryRules, World, Relative, Counterclockwise;
+
+Zone, Main_Office_Zone, 0.0, 0.0, 0.0, 0.0, 1, 1, 3.0, 400.0;
+
+EnergyManagementSystem:Sensor, Zone_Temperature_Sensor, Main_Office_Zone, Zone Air Temperature;
+EnergyManagementSystem:Actuator, Cooling_Setpoint_Actuator, Cooling_Setpoint_Schedule_AI, Schedule:Compact, Schedule Value;
+EnergyManagementSystem:Actuator, Heating_Setpoint_Actuator, Heating_Setpoint_Schedule_AI, Schedule:Compact, Schedule Value;
+
+Schedule:Compact, Cooling_Setpoint_Schedule_AI, Temperature, Through: 12/31, For: AllDays, Until: 24:00, 24.0;
+Schedule:Compact, Heating_Setpoint_Schedule_AI, Temperature, Through: 12/31, For: AllDays, Until: 24:00, 19.5;
+
+ThermostatSetpoint:DualSetpoint, EcoLoop_AI_Dual_Setpoint, Cooling_Setpoint_Schedule_AI, Heating_Setpoint_Schedule_AI;
+ZoneControl:Thermostat, Main_Office_Thermostat, Main_Office_Zone, Thermostat_Control_Type_Sched, ThermostatSetpoint:DualSetpoint, EcoLoop_AI_Dual_Setpoint;
